@@ -4,6 +4,7 @@ const EnvFn: ProjectEnvFn = (env) => ({
 		sourcemap: false,
 		// 消除打包大小超过500kb警告
 		chunkSizeWarningLimit: 4000,
+		assetsInlineLimit: 4 * 1024,
 		rollupOptions: {
 			input: {
 				index: pathResolve('index.html'),

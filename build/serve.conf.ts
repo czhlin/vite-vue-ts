@@ -1,4 +1,7 @@
+import { optimizeDeps } from './config';
 const EnvFn: ProjectEnvFn = (env) => ({
+	//依赖优化
+	optimizeDeps,
 	// vite 相关配置
 	server: {
 		// 是否开启 https
