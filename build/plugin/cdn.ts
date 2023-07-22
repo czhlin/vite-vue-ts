@@ -29,6 +29,7 @@ const CDN = {
 		},
 		{
 			name: '@element-plus/icons-vue',
+			var: '',
 			path: 'dist/index.iife.min.js',
 		},
 		// {
