@@ -4,15 +4,21 @@
 	"version": "0.0.0",
 	"scripts": {
 		"start": "pnpm dev",
-		"clean": "rimraf dist & rimraf report.html & rimraf package-lock.json & rimraf yarn.lock & rimraf node_modules",
+		"clean:all": "rimraf dist & rimraf report.html & rimraf package-lock.json & rimraf yarn.lock & rimraf node_modules",
+		"clean:dist": "rimraf dist",
+		"clean": "rimraf node_modules",
+		"clean:lock": "rimraf package-lock.json & rimraf yarn.lock",
+		"clean:report": "rimraf report.html",
 		"dev": "vite",
 		"prepare": "husky install",
 		"format": "prettier --write \"./**/*.{css,scss,html,vue,ts,js,jsx,tsx,json,md}\"",
 		"lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
 		"lint:style": "stylelint \"./**/*.{css,scss,vue,html}\" --fix",
+		"lint:fix": "pnpm format && pnpm lint && pnpm lint:style",
 		"build": "vue-tsc && vite build",
 		"report": "vue-tsc && vite build",
-		"preview": "rimraf dist && pnpm build && vite preview"
+		"preview": "vite preview",
+		"preview:clean": "rimraf dist && pnpm build && pnpm preview"
 	},
 	"dependencies": {
 		"element-plus": "^2.3.7",
@@ -70,19 +76,19 @@
 	},
 	"lint-staged": {
 		"*.vue": [
+			"prettier --write",
 			"eslint --fix",
 			"stylelint --fix",
-			"prettier --write",
 			"git add"
 		],
 		"*.{js,jsx,ts,tsx,jsx}": [
-			"eslint --fix",
 			"prettier --write",
+			"eslint --fix",
 			"git add"
 		],
 		"*.{css,scss,vue,html}": [
-			"stylelint --fix",
 			"prettier --write",
+			"stylelint --fix",
 			"git add"
 		],
 		"{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
