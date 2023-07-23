@@ -7,6 +7,7 @@ export type PathModuleCallBack<T> = () => ContextModuleValue<T>;
 export interface ImportContextModule {
 	<T>(path: () => ContextModule<T, T>, options?: ModuleOptions): ContextModule<T, T>;
 	<T>(path: () => ContextModule<T, () => Promise<T>>, options?: ModuleOptions): ContextModule<T, () => Promise<T>>;
+	<T>(path: PathModuleCallBack<T>, options?: ModuleOptions): ContextModule<T, T>;
 }
 export const importContextModule: ImportContextModule = <T>(path: PathModuleCallBack<T>, options?: ModuleOptions) => {
 	const modules = path();
