@@ -11,5 +11,8 @@ export const BUILD_ALIAS: Record<string, string> = {
 	'@': pathResolve('src'),
 };
 
+/**省略后缀名 */
+export const BUILD_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.json'];
+
 /** 设置打包根目录 */
 export const BUILD_ROOT: string = process.cwd();

@@ -1,5 +1,5 @@
 import autoprefixer from 'autoprefixer';
-import { BUILD_ALIAS, BUILD_ROOT, __APP_INFO__ } from './config';
+import { BUILD_ALIAS, BUILD_ROOT, __APP_INFO__, BUILD_EXTENSIONS } from './config';
 import { pathResolve } from './uitls';
 import getPluginsList from './plugin';
 // https://vitejs.dev/config/
@@ -11,7 +11,7 @@ const EnvFn: ProjectEnvFn = (env) => {
 		assetsInclude: '**/assets/*',
 		resolve: {
 			alias: BUILD_ALIAS,
-			extensions: ['.js', '.ts', 'json'], //省略后缀名
+			extensions: BUILD_EXTENSIONS, //省略后缀名
 		},
 		css: {
 			preprocessorOptions: {
