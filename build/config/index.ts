@@ -12,7 +12,7 @@ export const BUILD_ALIAS: Record<string, string> = {
 };
 
 /**省略后缀名 */
-export const BUILD_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.json'];
+export const BUILD_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'];
 
 /** 设置打包根目录 */
 export const BUILD_ROOT: string = process.cwd();

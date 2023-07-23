@@ -26,11 +26,11 @@ const download = () => {
 			<ep-circle-check-filled />
 			下载</el-button
 		>
-		<el-button @click="download"><ic-vue />下载</el-button>
+		<el-button type="primary" @click="download"><ic-vue />下载</el-button>
 	</div>
 </template>
 <style lang="scss" scoped>
 .title {
-	color: $hello;
+	color: var(--hello-world);
 }
 </style>

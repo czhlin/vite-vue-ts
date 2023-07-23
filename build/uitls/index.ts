@@ -49,13 +49,12 @@ export const warpProjectEnv: WarpProjectEnv = (env) => {
 				break;
 			case 'number': {
 				const numberRealName = Number(realName);
-				projectEnv[key] = numberRealName ? numberRealName : defaultValue;
+				projectEnv[key] = numberRealName ?? defaultValue;
 				break;
 			}
 			default:
-				projectEnv[key] = realName ? realName : defaultValue;
+				projectEnv[key] = realName ?? defaultValue;
 		}
-		projectEnv[key] = value;
 	}
 	return projectEnv;
 };

@@ -10,7 +10,7 @@ const ElementPlugin: Plugin = {
 		};
 		if (PROJECT_ENV.VITE_CDN) {
 			//使用CDN时
-			app.use(window.ElementPlus);
+			// app.use(window.ElementPlus);
 		}
 	},
 };

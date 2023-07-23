@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import ElementPlus from 'unplugin-element-plus/vite';
@@ -13,7 +14,7 @@ import viteImagemin from 'vite-plugin-imagemin';
 import { visualizer } from 'rollup-plugin-visualizer'; //打包分析
 import configCompressPlugin from './compress';
 import previewStaticGzipPlugin from './previewStaticGzip';
-import importCdnPlugin from './cdn';
+import htmlPlugin from './htmlPlugin';
 const lifecycle = process.env.npm_lifecycle_event;
 export default (env: ProjectEnv) => [
 	vue(),
@@ -25,8 +26,22 @@ export default (env: ProjectEnv) => [
 	}),
 	//自动导入组件
 	AutoImport({
-		resolvers: [ElementPlusResolver()],
+		// targets to transform
+		include: [
+			/\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+			/\.vue$/,
+			/\.vue\?vue/, // .vue
+			// /\.md$/, // .md
+		],
+		resolvers: [
+			ElementPlusResolver({
+				importStyle: 'sass',
+			}),
+		],
 		dts: 'types/auto-generate/auto-import.d.ts',
+		eslintrc: {
+			enabled: true, // <-- this
+		},
 	}),
 	//按需导入组件
 	Components({
@@ -44,7 +59,9 @@ export default (env: ProjectEnv) => [
 				enabledCollections: ['ep'],
 				customCollections: ['ic'],
 			}),
-			ElementPlusResolver(),
+			ElementPlusResolver({
+				importStyle: 'sass',
+			}),
 		],
 	}),
 	//关联eslint
@@ -93,7 +110,7 @@ export default (env: ProjectEnv) => [
 	//本地preview压缩后的打包文件插件
 	previewStaticGzipPlugin(),
 	//开启cdn加速
-	importCdnPlugin(env.VITE_CDN),
+	htmlPlugin(env.VITE_CDN),
 	// pnpm report 进行打包分析
 	lifecycle === 'report' ? visualizer({ open: true, brotliSize: true, filename: 'report.html' }) : null,
 ];

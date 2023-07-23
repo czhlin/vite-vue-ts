@@ -4,7 +4,15 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite + Vue + TS</title>
+		<title><%- title %></title>
+		<!-- 使用CDN的CSS文件 -->
+		<% for (const i of cdnCss) { %>
+		<link href="<%= i %>" rel="stylesheet" />
+		<% } %>
+		<!-- 使用CDN的JS文件 -->
+		<% for (const i of cdnJs) { %>
+		<script src="<%= i %>" defer></script>
+		<% } %>
 	</head>
 	<body>
 		<div id="app"></div>

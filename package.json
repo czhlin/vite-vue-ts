@@ -21,13 +21,12 @@
 		"preview:clean": "rimraf dist && pnpm build && pnpm preview"
 	},
 	"dependencies": {
-		"element-plus": "^2.3.7",
+		"element-plus": "^2.3.8",
 		"pinia": "^2.1.4",
 		"vue": "^3.3.4",
 		"vue-router": "^4.2.4"
 	},
 	"devDependencies": {
-		"@element-plus/icons-vue": "^2.1.0",
 		"@iconify-json/ep": "^1.1.11",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
@@ -64,8 +63,8 @@
 		"unplugin-icons": "^0.16.5",
 		"unplugin-vue-components": "^0.25.1",
 		"vite": "^4.3.9",
-		"vite-plugin-cdn-import": "^0.3.5",
 		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-ejs": "^1.6.4",
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-plugin-imagemin": "^0.6.1",
 		"vite-svg-loader": "^4.0.0",

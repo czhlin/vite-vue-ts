@@ -13,6 +13,6 @@ const $G = useGlobalAppProperties();
 
 <style lang="scss" scoped>
 .content {
-	color: $hello;
+	color: var(--hello-world);
 }
 </style>
