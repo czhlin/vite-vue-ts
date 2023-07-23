@@ -1,8 +1,10 @@
-import type { App } from 'vue';
+import type { Plugin } from 'vue';
 import element from './element';
 import icon from './icon';
-export default (app: App) => {
-	element(app);
-	icon(app);
-	return app;
+const AppPlugin: Plugin = {
+	install(app) {
+		app.use(element).use(icon);
+		return app;
+	},
 };
+export default AppPlugin;

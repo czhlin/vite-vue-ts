@@ -1,6 +1,7 @@
 import autoprefixer from 'autoprefixer';
-import { BUILD_ALIAS, BUILD_ROOT, __APP_INFO__, getPluginsList } from './config';
+import { BUILD_ALIAS, BUILD_ROOT, __APP_INFO__ } from './config';
 import { pathResolve } from './uitls';
+import getPluginsList from './plugin';
 // https://vitejs.dev/config/
 const EnvFn: ProjectEnvFn = (env) => {
 	return {
@@ -36,7 +37,8 @@ const EnvFn: ProjectEnvFn = (env) => {
 		plugins: getPluginsList(env),
 		define: {
 			__INTLIFY_PROD_DEVTOOLS__: false,
-			__APP_INFO__: JSON.stringify(__APP_INFO__),
+			__APP_INFO__,
+			PROJECT_ENV: env,
 		},
 	};
 };

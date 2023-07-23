@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import text from '@/assets/hello.txt';
 import pdfImg from '@/assets/jspdf.jpg';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 // import IconsVue from '~icons/ic/vue';
 // import IconsCircleCheckFilled from '~icons/ep/circleCheckFilled';
 import { HomeProps } from './types';
 defineProps<HomeProps>();
 const router = useRouter();
-const route = useRoute();
+// const route = useRoute();
 const download = () => {
 	router.push('/about');
 	// throw new Error('你好3');
@@ -20,7 +20,6 @@ const download = () => {
 		<h1 class="title">hello你好49{{ text }}</h1>
 		<img :src="pdfImg" />
 		{{ msg }}
-		{{ route }}
 		<!-- <el-button @click="download" :icon="IconsCircleCheckFilled">下载</el-button>
 		<el-button @click="download" :icon="IconsVue">下载</el-button> -->
 		<el-button @click="download">

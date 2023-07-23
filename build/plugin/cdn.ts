@@ -65,8 +65,8 @@ const CDN = {
 		// },
 	],
 };
-export default (hasCDN: string): Plugin | Plugin[] => {
-	if (hasCDN && hasCDN !== 'false') {
+export default (hasCDN: boolean): Plugin | Plugin[] => {
+	if (hasCDN) {
 		return importToCDN(CDN);
 	}
 	return null;

@@ -17,14 +17,18 @@ import importCdnPlugin from './cdn';
 const lifecycle = process.env.npm_lifecycle_event;
 export default (env: ProjectEnv) => [
 	vue(),
-	vueJsx(), //jsx、tsx语法支持
+	//jsx、tsx语法支持
+	vueJsx(),
+	//集成elementPlus组件库
 	ElementPlus({
 		useSource: true,
 	}),
+	//自动导入组件
 	AutoImport({
 		resolvers: [ElementPlusResolver()],
 		dts: 'types/auto-generate/auto-import.d.ts',
 	}),
+	//按需导入组件
 	Components({
 		// 指定组件位置，默认是src/components
 		dirs: ['src/components'],
@@ -43,6 +47,7 @@ export default (env: ProjectEnv) => [
 			ElementPlusResolver(),
 		],
 	}),
+	//关联eslint
 	eslintPlugin({
 		include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
 	}),
@@ -83,9 +88,12 @@ export default (env: ProjectEnv) => [
 			],
 		},
 	}),
+	//文件压缩
 	configCompressPlugin(env.VITE_COMPRESSION),
+	//本地preview压缩后的打包文件插件
 	previewStaticGzipPlugin(),
+	//开启cdn加速
 	importCdnPlugin(env.VITE_CDN),
-	// 打包分析
+	// pnpm report 进行打包分析
 	lifecycle === 'report' ? visualizer({ open: true, brotliSize: true, filename: 'report.html' }) : null,
 ];

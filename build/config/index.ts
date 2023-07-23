@@ -1,7 +1,10 @@
 import { pathResolve } from '../uitls';
-export * from './appInfo';
-import getPluginsList from '../plugin';
-import optimizeDeps from './optimizeDeps';
+
+/**导出打包版本信息 */
+export { __APP_INFO__ } from './appInfo';
+
+/** 导出依赖预构建配置 */
+export { default as optimizeDeps } from './optimizeDeps';
 
 /** 设置别名 */
 export const BUILD_ALIAS: Record<string, string> = {
@@ -10,5 +13,3 @@ export const BUILD_ALIAS: Record<string, string> = {
 
 /** 设置打包根目录 */
 export const BUILD_ROOT: string = process.cwd();
-
-export { getPluginsList /**导出plugin */, optimizeDeps /** 导出依赖预构建配置 */ };
