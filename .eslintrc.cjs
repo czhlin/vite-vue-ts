@@ -30,7 +30,5 @@ module.exports = {
 		'@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '.*', args: 'none' }], //变量声明未使用
 		'@typescript-eslint/no-explicit-any': 'off', // 允许ts使用any
 		'linebreak-style': 'error',
-		// 'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-		'no-undef': 'off',
 	},
 };

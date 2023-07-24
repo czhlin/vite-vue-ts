@@ -1,5 +1,5 @@
 import type { Plugin } from 'vue';
-import { loadContextIcons, loadIcons } from '@/components/Icon';
+import { loadContextIcons } from '@/components/Icon';
 const IconPlugin: Plugin = {
 	async install(app) {
 		if (!PROJECT_ENV.VITE_CDN) {
@@ -7,7 +7,7 @@ const IconPlugin: Plugin = {
 			return;
 		}
 		//注册全局icon组件
-		loadIcons(app, window.ElementPlusIconsVue as Record<string, IconModule>, 'Ep'); //加载elementPlus的Icon
+		// loadIcons(app, window.ElementPlusIconsVue as Record<string, IconModule>, 'Ep'); //加载elementPlus的Icon
 		loadContextIcons(app, () => import.meta.glob<IconModule>('@/assets/icons/*'), 'Ic'); //加载本地@/assets/icons中的Icon
 	},
 };

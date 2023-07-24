@@ -23,11 +23,13 @@
 	"dependencies": {
 		"element-plus": "^2.3.8",
 		"pinia": "^2.1.4",
+		"ramda": "^0.29.0",
 		"vue": "^3.3.4",
 		"vue-router": "^4.2.4"
 	},
 	"devDependencies": {
 		"@iconify-json/ep": "^1.1.11",
+		"@types/ramda": "^0.29.3",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"@vitejs/plugin-vue": "^4.1.0",

@@ -9,6 +9,7 @@ defineProps<HomeProps>();
 const router = useRouter();
 // const route = useRoute();
 const download = () => {
+	ElMessage.success('切换成功！');
 	router.push('/about');
 	// throw new Error('你好3');
 	//todo

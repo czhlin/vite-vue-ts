@@ -15,6 +15,7 @@ import { visualizer } from 'rollup-plugin-visualizer'; //打包分析
 import configCompressPlugin from './compress';
 import previewStaticGzipPlugin from './previewStaticGzip';
 import htmlPlugin from './htmlPlugin';
+import { setPreLoadFile } from './preload';
 const lifecycle = process.env.npm_lifecycle_event;
 export default (env: ProjectEnv) => [
 	vue(),
@@ -26,6 +27,7 @@ export default (env: ProjectEnv) => [
 	}),
 	//自动导入组件
 	AutoImport({
+		imports: ['vue'],
 		// targets to transform
 		include: [
 			/\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -39,12 +41,21 @@ export default (env: ProjectEnv) => [
 			}),
 		],
 		dts: 'types/auto-generate/auto-import.d.ts',
+		// Inject the imports at the end of other imports
+		injectAtEnd: true,
 		eslintrc: {
 			enabled: true, // <-- this
+			filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+			globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
 		},
 	}),
 	//按需导入组件
 	Components({
+		include: [
+			/\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+			/\.vue$/,
+			/\.vue\?vue/, // .vue
+		],
 		// 指定组件位置，默认是src/components
 		dirs: ['src/components'],
 		// extensions: ['vue'],
@@ -113,4 +124,14 @@ export default (env: ProjectEnv) => [
 	htmlPlugin(env.VITE_CDN),
 	// pnpm report 进行打包分析
 	lifecycle === 'report' ? visualizer({ open: true, brotliSize: true, filename: 'report.html' }) : null,
+	//预加载
+	env.VITE_ENV === 'development' &&
+		setPreLoadFile({
+			pathList: [
+				// 需要提前加载的资源目录
+				'./src/views/',
+				'./src/components/',
+			],
+			preFix: '', // 项目根路径
+		}),
 ];

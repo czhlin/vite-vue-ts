@@ -10,6 +10,7 @@ declare module 'vue' {
 		ElButton: typeof import('element-plus/es')['ElButton'];
 		ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider'];
 		ElDatePicker: typeof import('element-plus/es')['ElDatePicker'];
+		ElIcon: typeof import('element-plus/es')['ElIcon'];
 		ElOption: typeof import('element-plus/es')['ElOption'];
 		ElRadioButton: typeof import('element-plus/es')['ElRadioButton'];
 		ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup'];
