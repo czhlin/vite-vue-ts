@@ -16,3 +16,6 @@ export const BUILD_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', 
 
 /** 设置打包根目录 */
 export const BUILD_ROOT: string = process.cwd();
+
+/** cdn相关配置 */
+export { PROJECT_CDN, EXTERNAL_ARRAY, VENDOR_NAME } from './cdn';

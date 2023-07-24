@@ -37,8 +37,10 @@ const EnvFn: ProjectEnvFn = (env) => {
 		plugins: getPluginsList(env),
 		define: {
 			__INTLIFY_PROD_DEVTOOLS__: false,
+			__VUE_PROD_DEVTOOLS__: false,
 			__APP_INFO__,
 			PROJECT_ENV: env,
+			'process.env.NODE_ENV': `'${env.VITE_ENV}'`,
 		},
 	};
 };

@@ -1,4 +1,5 @@
 import { pathResolve } from './uitls';
+import { EXTERNAL_ARRAY, VENDOR_NAME } from './config';
 const EnvFn: ProjectEnvFn = (env) => ({
 	build: {
 		sourcemap: false,
@@ -9,6 +10,7 @@ const EnvFn: ProjectEnvFn = (env) => ({
 			input: {
 				index: pathResolve('index.html'),
 			},
+			external: env.VITE_CDN ? EXTERNAL_ARRAY : [],
 			// 静态资源分类打包
 			output: {
 				chunkFileNames: 'static/js/[name]-[hash].js',
@@ -17,7 +19,9 @@ const EnvFn: ProjectEnvFn = (env) => ({
 				manualChunks(id) {
 					// 将 node_modules 中的代码单独打包成一个 JS 文件
 					if (id.includes('node_modules')) {
-						return 'vendor';
+						const key = VENDOR_NAME.find((key) => id.includes(key)) ?? 'common';
+						const name = `vendor-${key}`;
+						return name;
 					}
 				},
 			},

@@ -6,13 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title><%- title %></title>
 		<!-- 使用CDN的CSS文件 -->
-		<% for (const i of cdnCss) { %>
+		<% for (const i of css) { %>
 		<link href="<%= i %>" rel="stylesheet" />
 		<% } %>
 		<!-- 使用CDN的JS文件 -->
-		<% for (const i of cdnJs) { %>
+		<% for (const i of js) { %>
 		<script src="<%= i %>" defer></script>
 		<% } %>
+		<!-- 使用CDN的esm -->
+		<script type="importmap">
+			{
+			  "imports": <%- JSON.stringify(importMap) %>
+			}
+		</script>
 	</head>
 	<body>
 		<div id="app"></div>

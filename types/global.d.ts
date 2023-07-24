@@ -4,7 +4,7 @@ declare global {
 	import type { UserConfig } from 'vite';
 	import type { installer as ElementPlusInstaller } from 'element-plus';
 	export interface ProjectEnv {
-		ENV: string;
+		VITE_ENV: string;
 		VITE_PORT: number;
 		VITE_APP_TITLE: string;
 		VITE_APP_API_HOST: string;

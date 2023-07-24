@@ -25,7 +25,7 @@ export const pathResolve: PathResolve = (dir) => {
 
 export const warpProjectEnv: WarpProjectEnv = (env) => {
 	const projectEnv: ProjectEnv = {
-		ENV: '',
+		VITE_ENV: '',
 		VITE_PORT: 8848,
 		VITE_APP_TITLE: '',
 		VITE_APP_API_HOST: '',
